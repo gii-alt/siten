@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7e6e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #e0a0a0;
+            padding: 20px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+        }
+        .timer, .countdown {
+            margin: 50px auto;
+            font-size: 2em;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .bio {
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0a0a0;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            margin-top: 50px;
+        }
+        .gallery {
+            margin-top: 30px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Meu Site </h1>
+    </header>
+
+    <section class="timer">
+        <h2>Tempo de Namoro (desde 12/12/2023)</h2>
+        <p id="tempo-namoro"></p>
+    </section>
+
+    <section class="countdown">
+        <h2>Tempo Até Completar 1 Ano (365 dias)</h2>
+        <p id="tempo-ate-um-ano"></p>
+    </section>
+
+    <section class="bio">
+        <h2>Sobre Nos</h2>
+        <p>Bem-vindo ao meu site pessoal! Aqui você pode acompanhar o tempo do nosso namoro e quanto falta para completar 1 ano de relacionamento.</p>
+    </section>
+
+    <section class="gallery">
+        <h2>Memórias Especiais</h2>
+        <img src="WhatsApp Image 2024-09-24 at 00.57.15 (1).jpeg" alt="Memória 1">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.16 (2).jpeg" alt="Memória 2">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.16 (3).jpeg" alt="Memória 3">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.16 (4).jpeg" alt="Memória 4">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.16 (5).jpeg" alt="Memória 5">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.16 (6).jpeg" alt="Memória 6">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.15.jpeg" alt="Memória 7">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.16.jpeg" alt="Memória 8">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.17 (1).jpeg" alt="Memória 9">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.17 (2).jpeg" alt="Memória 10">
+        <img src="WhatsApp Image 2024-09-24 at 00.57.17 (3).jpeg" alt="Memória 11">  
+        <img src="WhatsApp Image 2024-09-24 at 00.57.17.jpeg" alt="Memória 12">
+    </section>
+
+    <footer>
+        <p>Feito com ♥ por Giovanna - Contato:Amor</p>
+    </footer>
+
+    <script>
+        // Data de início do namoro (12 de dezembro de 2023)
+        var inicioNamoro = new Date("2023-12-12T00:00:00");
+        // Data de 1 ano de namoro (365 dias depois)
+        var umAnoNamoro = new Date(inicioNamoro);
+        umAnoNamoro.setFullYear(inicioNamoro.getFullYear() + 1);
+
+        function atualizarTempo() {
+            var agora = new Date();
+            var diferencaPassada = agora - inicioNamoro;
+            
+            // Cálculo do tempo passado desde o início do namoro
+            var diasPassados = Math.floor(diferencaPassada / (1000 * 60 * 60 * 24));
+            var horasPassadas = Math.floor((diferencaPassada % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutosPassados = Math.floor((diferencaPassada % (1000 * 60 * 60)) / (1000 * 60));
+            var segundosPassados = Math.floor((diferencaPassada % (1000 * 60)) / 1000);
+            
+            document.getElementById("tempo-namoro").innerHTML = diasPassados + " dias " + horasPassadas + " horas " 
+                + minutosPassados + " minutos " + segundosPassados + " segundos passaram desde o início.";
+
+            // Cálculo do tempo até completar 1 ano de namoro
+            var tempoRestante = umAnoNamoro - agora;
+
+            if (tempoRestante > 0) {
+                var diasRestantes = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+                var horasRestantes = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutosRestantes = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
+                var segundosRestantes = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
+                document.getElementById("tempo-ate-um-ano").innerHTML = "Faltam " + diasRestantes + " dias " 
+                    + horasRestantes + " horas " + minutosRestantes + " minutos " + segundosRestantes + " segundos para completar 1 ano de namoro.";
+            } else {
+                document.getElementById("tempo-ate-um-ano").innerHTML = "Completamos 1 ano de namoro!e muitas memorias";
+            }
+        }
+
+        setInterval(atualizarTempo, 1000);
+    </script>
+
+</body>
+</html>
